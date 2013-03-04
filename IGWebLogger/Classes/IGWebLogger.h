@@ -11,7 +11,7 @@
 #import "WebSocket.h"
 #import "IGWebLoggerWebSocket.h"
 
-@interface IGWebLogger : DDAbstractLogger <DDLogger>
+@interface IGWebLogger : DDAbstractLogger <DDLogger, DDLogFormatter>
 
 @property (nonatomic, strong) NSMutableArray* webSockets;
 

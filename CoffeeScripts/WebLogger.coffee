@@ -31,6 +31,10 @@ $(document).ready ->
       console.log "connection closed"
       logger.setConnected(false)
     ws.onmessage = (evt) ->
-      logger.log evt.data
+      data = $.parseJSON(evt.data)
+      if data.message && data.level
+        logger.log data.message, data.level
+      else
+        console.log "unexpected data: ", evt.data
   else
     alert "Your browser doesn't support WebSocket!"

@@ -46,7 +46,13 @@
         return logger.setConnected(false);
       };
       return ws.onmessage = function(evt) {
-        return logger.log(evt.data);
+        var data;
+        data = $.parseJSON(evt.data);
+        if (data.message && data.level) {
+          return logger.log(data.message, data.level);
+        } else {
+          return console.log("unexpected data: ", evt.data);
+        }
       };
     } else {
       return alert("Your browser doesn't support WebSocket!");

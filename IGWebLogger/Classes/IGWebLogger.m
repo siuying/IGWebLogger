@@ -41,21 +41,7 @@ static IGWebLogger *sharedInstance;
 	return self;
 }
 
-- (void)logMessage:(DDLogMessage *)logMessage
-{
-	NSString *logMsg = logMessage->logMsg;
-	if (formatter)
-	{
-		logMsg = [formatter formatLogMessage:logMessage];
-	}
-
-	if (logMsg && [self.webSockets count] > 0)
-	{
-        [self.webSockets enumerateObjectsUsingBlock:^(WebSocket* socket, NSUInteger idx, BOOL *stop) {
-            [socket sendMessage:logMsg];
-        }];
-	}
-}
+#pragma mark - Public
 
 - (void)addWebSocket:(WebSocket*)webSocket
 {
@@ -71,9 +57,58 @@ static IGWebLogger *sharedInstance;
     });
 }
 
+#pragma mark - DDLogger
+
+- (void)logMessage:(DDLogMessage *)logMessage
+{
+	if ([self.webSockets count] > 0)
+	{
+        NSString *logMsg = [self formatLogMessage:logMessage];
+        if (logMsg)
+        {
+            [self.webSockets enumerateObjectsUsingBlock:^(WebSocket* socket, NSUInteger idx, BOOL *stop) {
+                [socket sendMessage:logMsg];
+            }];
+        }
+	}
+}
+
 - (NSString *)loggerName
 {
 	return @"hk.ignition.logger.IGWebLogger";
+}
+
+// a DDLogFormatter that format the log in JSON
+
+#pragma mark - DDLogFormatter
+
+- (NSString *)formatLogMessage:(DDLogMessage *)logMessage {
+    NSString* logLevel;
+    switch (logMessage->logFlag)
+    {
+        case LOG_FLAG_ERROR : logLevel = @"error"; break;
+        case LOG_FLAG_WARN : logLevel = @"warn"; break;
+        case LOG_FLAG_INFO : logLevel = @"info"; break;
+        default : logLevel = @"verbose"; break;
+    }
+    
+    NSError* error;
+    NSString* file = [NSString stringWithUTF8String:logMessage->file];
+    NSString* function = [NSString stringWithUTF8String:logMessage->function];
+
+    NSDictionary* data = @{
+                           @"message": logMessage->logMsg,
+                           @"level": logLevel,
+                           @"file": file,
+                           @"function": function,
+                           @"line": [NSNumber numberWithInt:logMessage->lineNumber]
+                        };
+    NSData* jsonData = [NSJSONSerialization dataWithJSONObject:data
+                                                       options:0
+                                                         error:&error];
+    NSString* jsonStr = [[NSString alloc] initWithData:jsonData
+                                              encoding:NSUTF8StringEncoding];
+    return jsonStr;
 }
 
 @end
