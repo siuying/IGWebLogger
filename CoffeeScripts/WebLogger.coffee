@@ -1,6 +1,6 @@
 class WebLogger
   constructor: ->
-  
+
   setConnected: (connected) ->
     @connected = connected
     if connected

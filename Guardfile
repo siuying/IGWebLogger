@@ -1,1 +1,1 @@
-guard 'coffeescript', :input => 'CoffeeScripts', :output => 'IGWebLogger/Web/js'
+guard 'coffeescript', :input => 'CoffeeScripts', :output => 'IGWebLogger/Web'
