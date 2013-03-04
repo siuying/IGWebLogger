@@ -51,6 +51,7 @@
 		542D8BF816E46BD400F27E63 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web; sourceTree = "<group>"; };
 		542D8BFA16E46CEC00F27E63 /* IGWebLoggerWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGWebLoggerWebSocket.h; path = Classes/IGWebLoggerWebSocket.h; sourceTree = "<group>"; };
 		542D8BFB16E46CEC00F27E63 /* IGWebLoggerWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGWebLoggerWebSocket.m; path = Classes/IGWebLoggerWebSocket.m; sourceTree = "<group>"; };
+		54999BFB16E4879C00EF389A /* CoffeeScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoffeeScripts; sourceTree = SOURCE_ROOT; };
 		BB38D110B28F4731BFC877A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264F7A2CF8C471085204D19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -102,6 +103,7 @@
 		542D8BCE16E45D1500F27E63 /* IGWebLogger */ = {
 			isa = PBXGroup;
 			children = (
+				54999BFB16E4879C00EF389A /* CoffeeScripts */,
 				542D8BF816E46BD400F27E63 /* Web */,
 				542D8BEE16E4656C00F27E63 /* Classes */,
 				542D8BD716E45D1500F27E63 /* AppDelegate.h */,

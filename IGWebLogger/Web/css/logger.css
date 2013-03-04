@@ -1,7 +1,19 @@
 #logger {
-min-height: 600px;
-border: 1px solid #DDDDDD;
-border-radius: 4px 4px 4px 4px;
-margin: 15px 0;
-overflow:auto;
+  height: 600px;
+  min-height: 600px;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px 4px 4px 4px;
+  margin: 15px 0;
+  padding: 8px;
+  overflow:auto;
+}
+
+#status {
+  float: right;
+  font-style: italic;
+  color: #00AA00;
+}
+
+#status.warning {
+  color: #DD0000;
 }

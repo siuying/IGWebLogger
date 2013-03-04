@@ -3,18 +3,23 @@
         <title>IGWebLogger</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="css/logger.css" rel="stylesheet" media="screen">
-        <!-- Bootstrap -->
-        <script type="text/javascript" src="websocket.js"></script>
+        <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/WebLogger.js"></script>
     </head>
-    <body bgcolor="#FFFFFF" onload="WebSocketSetup()">
-        
+    <body bgcolor="#FFFFFF">
         <div class="container">
             <div class="row">
                 <div class="span12">
                     <div id="logger">
                     </div>
                 </div>
-            </div>            
+            </div>
+            <div class="row">
+                <div class="span12">
+                    <button class="btn btn-primary" id="clear">Clear</button>
+                    <p id="status"></p>
+                </div>
+            </div>
         </div> <!-- /container -->
     </body>
 </html>

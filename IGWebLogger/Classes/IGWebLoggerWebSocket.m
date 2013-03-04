@@ -17,11 +17,6 @@
     [[IGWebLogger sharedInstance] addWebSocket:self];
 }
 
-- (void)didReceiveMessage:(NSString *)msg
-{  
-    [self sendMessage:[NSString stringWithFormat:@"server -> %@", [NSDate date]]];
-}
-
 - (void)didClose
 {
     [[IGWebLogger sharedInstance] removeWebSocket:self];

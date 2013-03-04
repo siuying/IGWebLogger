@@ -23,7 +23,7 @@ static const int httpLogLevel = HTTP_LOG_LEVEL_WARN | HTTP_LOG_FLAG_TRACE;
     HTTPLogTrace();
 
     // Replace %%WEBSOCKET_URL%% from websocket.js to the actual URL of the server
-    if ([path isEqualToString:@"/websocket.js"]) {
+    if ([path isEqualToString:@"/js/WebLogger.js"]) {
         NSString *wsLocation;
         NSString *wsHost = [request headerField:@"Host"];
         if (wsHost == nil)
