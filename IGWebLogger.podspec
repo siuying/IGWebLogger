@@ -11,4 +11,6 @@ Pod::Spec.new do |s|
   s.platform = :ios, '5.0'
   s.source_files = 'IGWebLogger/Classes/*.{m,h}'
   s.resources = 'IGWebLogger/Web/*.*'
+  s.dependency "CocoaLumberjack", "~> 1.3.0"
+  s.dependency "CocoaHTTPServer"
 end
