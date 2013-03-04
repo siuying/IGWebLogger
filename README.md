@@ -27,18 +27,14 @@ First, start the web socket server in AppDelegate.m
   // setup logger
   [DDLog addLogger:[IGWebLogger sharedInstance]];
 
-  // setup HTTP Server
-  self.httpServer = [[HTTPServer alloc] init];
-  [self.httpServer setConnectionClass:[IGWebLoggerURLConnection class]];
-  [self.httpServer setType:@"_http._tcp."];
-  [self.httpServer setPort:8888];
-  NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
-  [self.httpServer setDocumentRoot:webPath];
+  // setup HTTP server
+  self.httpServer = [IGWebLogger httpServer];
   NSError *error;
   if(![self.httpServer start:&error])
   {
       DDLogError(@"Error starting HTTP Server: %@", error);
   }
+
   return YES;
 }
 ```

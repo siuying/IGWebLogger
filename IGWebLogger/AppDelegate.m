@@ -9,13 +9,10 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
-#import "HTTPServer.h"
 #import "DDLog.h"
 #import "DDASLLogger.h"
 #import "DDTTYLogger.h"
 #import "IGWebLogger.h"
-#import "IGWebLoggerURLConnection.h"
 
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
@@ -76,16 +73,7 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
 
-    self.httpServer = [[HTTPServer alloc] init];
-    [self.httpServer setConnectionClass:[IGWebLoggerURLConnection class]];
-    [self.httpServer setType:@"_http._tcp."];
-    
-    // for debug only
-    [self.httpServer setPort:8888];
-
-    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
-    [self.httpServer setDocumentRoot:webPath];
-
+    self.httpServer = [IGWebLogger httpServer];
     NSError *error;
     if(![self.httpServer start:&error])
     {

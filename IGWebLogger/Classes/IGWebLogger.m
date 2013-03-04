@@ -8,6 +8,8 @@
 
 #import "IGWebLogger.h"
 #import "WebSocket.h"
+#import "HTTPServer.h"
+#import "IGWebLoggerURLConnection.h"
 
 @implementation IGWebLogger
 
@@ -55,6 +57,22 @@ static IGWebLogger *sharedInstance;
     dispatch_sync([DDLog loggingQueue], ^{
         [self.webSockets removeObject:webSocket];
     });
+}
+
++ (HTTPServer*) httpServer {
+    return [self httpServerWithPort:8888];
+}
+
++ (HTTPServer*) httpServerWithPort:(UInt16)port {
+    HTTPServer* httpServer = [[HTTPServer alloc] init];
+    [httpServer setConnectionClass:[IGWebLoggerURLConnection class]];
+    [httpServer setType:@"_http._tcp."];
+
+    [httpServer setPort:8888];
+    
+    NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"IGWebLogger.bundle"];
+    [httpServer setDocumentRoot:webPath];
+    return httpServer;
 }
 
 #pragma mark - DDLogger
