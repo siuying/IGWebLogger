@@ -16,5 +16,5 @@ Pod::Spec.new do |s|
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => '$(SDKROOT)/usr/include/libxml2' }
 
   s.dependency "CocoaAsyncSocket", "~> 0.0.1"
-  s.dependency "CocoaLumberjack", "~> 1.3.0"
+  s.dependency "CocoaLumberjack"
 end

@@ -19,6 +19,31 @@
 #warning This file must be compiled with ARC. Use -fobjc-arc flag (or convert project to ARC).
 #endif
 
+// Does ARC support support GCD objects?
+// It does if the minimum deployment target is iOS 6+ or Mac OS X 8+
+
+#if TARGET_OS_IPHONE
+
+  // Compiling for iOS
+
+  #if __IPHONE_OS_VERSION_MIN_REQUIRED >= 60000 // iOS 6.0 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else                                         // iOS 5.X or earlier
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1
+  #endif
+
+#else
+
+  // Compiling for Mac OS X
+
+  #if MAC_OS_X_VERSION_MIN_REQUIRED >= 1080     // Mac OS X 10.8 or later
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 0
+  #else
+    #define NEEDS_DISPATCH_RETAIN_RELEASE 1     // Mac OS X 10.7 or earlier
+  #endif
+
+#endif
+
 // We probably shouldn't be using DDLog() statements within the DDLog implementation.
 // But we still want to leave our log statements for any future debugging,
 // and to allow other developers to trace the implementation (which is a great learning tool).
@@ -80,6 +105,11 @@
 		NSLogVerbose(@"DDFileLogManagerDefault: sortedLogFileNames:\n%@", [self sortedLogFileNames]);
 	}
 	return self;
+}
+
+- (void)dealloc
+{
+	[self removeObserver:self forKeyPath:@"maximumNumberOfLogFiles"];
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -480,7 +510,6 @@
 	if (rollingTimer)
 	{
 		dispatch_source_cancel(rollingTimer);
-		dispatch_release(rollingTimer);
 		rollingTimer = NULL;
 	}
 }
@@ -506,12 +535,12 @@
 	}
 	else
 	{
-		dispatch_queue_t loggingQueue = [DDLog loggingQueue];
-		NSAssert(currentQueue != loggingQueue, @"Core architecture requirement failure");
+		dispatch_queue_t globalLoggingQueue = [DDLog loggingQueue];
+		NSAssert(currentQueue != globalLoggingQueue, @"Core architecture requirement failure");
 		
 		__block unsigned long long result;
 		
-		dispatch_sync(loggingQueue, ^{
+		dispatch_sync(globalLoggingQueue, ^{
 			dispatch_sync(loggerQueue, ^{
 				result = maximumFileSize;
 			});
@@ -540,10 +569,10 @@
 	}
 	else
 	{
-		dispatch_queue_t loggingQueue = [DDLog loggingQueue];
-		NSAssert(currentQueue != loggingQueue, @"Core architecture requirement failure");
+		dispatch_queue_t globalLoggingQueue = [DDLog loggingQueue];
+		NSAssert(currentQueue != globalLoggingQueue, @"Core architecture requirement failure");
 		
-		dispatch_async(loggingQueue, ^{
+		dispatch_async(globalLoggingQueue, ^{
 			dispatch_async(loggerQueue, block);
 		});
 	}
@@ -564,12 +593,12 @@
 	}
 	else
 	{
-		dispatch_queue_t loggingQueue = [DDLog loggingQueue];
-		NSAssert(currentQueue != loggingQueue, @"Core architecture requirement failure");
+		dispatch_queue_t globalLoggingQueue = [DDLog loggingQueue];
+		NSAssert(currentQueue != globalLoggingQueue, @"Core architecture requirement failure");
 		
 		__block NSTimeInterval result;
 		
-		dispatch_sync(loggingQueue, ^{
+		dispatch_sync(globalLoggingQueue, ^{
 			dispatch_sync(loggerQueue, ^{
 				result = rollingFrequency;
 			});
@@ -598,10 +627,10 @@
 	}
 	else
 	{
-		dispatch_queue_t loggingQueue = [DDLog loggingQueue];
-		NSAssert(currentQueue != loggingQueue, @"Core architecture requirement failure");
+		dispatch_queue_t globalLoggingQueue = [DDLog loggingQueue];
+		NSAssert(currentQueue != globalLoggingQueue, @"Core architecture requirement failure");
 		
-		dispatch_async(loggingQueue, ^{
+		dispatch_async(globalLoggingQueue, ^{
 			dispatch_async(loggerQueue, block);
 		});
 	}
@@ -616,7 +645,6 @@
 	if (rollingTimer)
 	{
 		dispatch_source_cancel(rollingTimer);
-		dispatch_release(rollingTimer);
 		rollingTimer = NULL;
 	}
 	
@@ -645,6 +673,13 @@
 		
 	}});
 	
+	#if NEEDS_DISPATCH_RETAIN_RELEASE
+	dispatch_source_t theRollingTimer = rollingTimer;
+	dispatch_source_set_cancel_handler(rollingTimer, ^{
+		dispatch_release(theRollingTimer);
+	});
+	#endif
+	
 	uint64_t delay = [logFileRollingDate timeIntervalSinceNow] * NSEC_PER_SEC;
 	dispatch_time_t fireTime = dispatch_time(DISPATCH_TIME_NOW, delay);
 	
@@ -672,10 +707,10 @@
 	}
 	else
 	{
-		dispatch_queue_t loggingQueue = [DDLog loggingQueue];
-		NSAssert(currentQueue != loggingQueue, @"Core architecture requirement failure");
+		dispatch_queue_t globalLoggingQueue = [DDLog loggingQueue];
+		NSAssert(currentQueue != globalLoggingQueue, @"Core architecture requirement failure");
 		
-		dispatch_async(loggingQueue, ^{
+		dispatch_async(globalLoggingQueue, ^{
 			dispatch_async(loggerQueue, block);
 		});
 	}
@@ -704,7 +739,6 @@
 	if (rollingTimer)
 	{
 		dispatch_source_cancel(rollingTimer);
-		dispatch_release(rollingTimer);
 		rollingTimer = NULL;
 	}
 }
