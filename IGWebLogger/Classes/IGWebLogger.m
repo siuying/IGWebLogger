@@ -111,11 +111,11 @@ static IGWebLogger *sharedInstance;
     }
     
     NSError* error;
-    NSString* file = [NSString stringWithUTF8String:logMessage->file];
-    NSString* function = [NSString stringWithUTF8String:logMessage->function];
-
+    NSString* message = logMessage->logMsg ? logMessage->logMsg : @"";
+    NSString* file = logMessage->file ? [NSString stringWithUTF8String:logMessage->file] : @"";
+    NSString* function = logMessage->function ? [NSString stringWithUTF8String:logMessage->function] : @"";
     NSDictionary* data = @{
-                           @"message": logMessage->logMsg,
+                           @"message": message,
                            @"level": logLevel,
                            @"file": file,
                            @"function": function,
