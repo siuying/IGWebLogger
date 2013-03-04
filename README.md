@@ -30,6 +30,7 @@ First, start the web socket server in AppDelegate.m
 
 Then connects your browser to http://localhost:8888 to view the logs realtime. (replace localhost with your iPhone address, if you run this on real device)
 
+
 ### Dependency
 
 -  CocoaHTTPServer - use the HEAD version which has latest WebSocket and ARC supports
