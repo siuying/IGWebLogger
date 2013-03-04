@@ -21,8 +21,8 @@
 		542D8BE816E45D1500F27E63 /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 542D8BE616E45D1500F27E63 /* ViewController_iPad.xib */; };
 		542D8BF116E4658300F27E63 /* IGWebLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 542D8BF016E4658300F27E63 /* IGWebLogger.m */; };
 		542D8BF416E469D200F27E63 /* IGWebLoggerURLConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 542D8BF316E469D200F27E63 /* IGWebLoggerURLConnection.m */; };
-		542D8BF916E46BD400F27E63 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 542D8BF816E46BD400F27E63 /* Web */; };
 		542D8BFC16E46CEC00F27E63 /* IGWebLoggerWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 542D8BFB16E46CEC00F27E63 /* IGWebLoggerWebSocket.m */; };
+		54999C3016E4A09600EF389A /* IGWebLogger.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 54999C2F16E4A09600EF389A /* IGWebLogger.bundle */; };
 		BDB46F0630014779A9F9F306 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BB38D110B28F4731BFC877A3 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -48,10 +48,10 @@
 		542D8BF016E4658300F27E63 /* IGWebLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGWebLogger.m; path = Classes/IGWebLogger.m; sourceTree = "<group>"; };
 		542D8BF216E469D200F27E63 /* IGWebLoggerURLConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGWebLoggerURLConnection.h; path = Classes/IGWebLoggerURLConnection.h; sourceTree = "<group>"; };
 		542D8BF316E469D200F27E63 /* IGWebLoggerURLConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGWebLoggerURLConnection.m; path = Classes/IGWebLoggerURLConnection.m; sourceTree = "<group>"; };
-		542D8BF816E46BD400F27E63 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web; sourceTree = "<group>"; };
 		542D8BFA16E46CEC00F27E63 /* IGWebLoggerWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IGWebLoggerWebSocket.h; path = Classes/IGWebLoggerWebSocket.h; sourceTree = "<group>"; };
 		542D8BFB16E46CEC00F27E63 /* IGWebLoggerWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = IGWebLoggerWebSocket.m; path = Classes/IGWebLoggerWebSocket.m; sourceTree = "<group>"; };
 		54999BFB16E4879C00EF389A /* CoffeeScripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = CoffeeScripts; sourceTree = SOURCE_ROOT; };
+		54999C2F16E4A09600EF389A /* IGWebLogger.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IGWebLogger.bundle; sourceTree = "<group>"; };
 		BB38D110B28F4731BFC877A3 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D264F7A2CF8C471085204D19 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -103,8 +103,8 @@
 		542D8BCE16E45D1500F27E63 /* IGWebLogger */ = {
 			isa = PBXGroup;
 			children = (
+				54999C2F16E4A09600EF389A /* IGWebLogger.bundle */,
 				54999BFB16E4879C00EF389A /* CoffeeScripts */,
-				542D8BF816E46BD400F27E63 /* Web */,
 				542D8BEE16E4656C00F27E63 /* Classes */,
 				542D8BD716E45D1500F27E63 /* AppDelegate.h */,
 				542D8BD816E45D1500F27E63 /* AppDelegate.m */,
@@ -202,7 +202,7 @@
 				542D8BDF16E45D1500F27E63 /* Default-568h@2x.png in Resources */,
 				542D8BE516E45D1500F27E63 /* ViewController_iPhone.xib in Resources */,
 				542D8BE816E45D1500F27E63 /* ViewController_iPad.xib in Resources */,
-				542D8BF916E46BD400F27E63 /* Web in Resources */,
+				54999C3016E4A09600EF389A /* IGWebLogger.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
