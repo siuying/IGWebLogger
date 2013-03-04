@@ -1,6 +1,6 @@
 ## IGWebLogger
 
-IGWebLogger allows you to view your iOS app logs over browser.
+IGWebLogger allows you to view your iOS app logs over web browser in realtime.
 
 It is a CocoaLumberjack logger which prints log over websocket connection.
 
