@@ -12,5 +12,4 @@ Pod::Spec.new do |s|
   s.source_files = 'IGWebLogger/Classes/*.{m,h}'
   s.resources = 'IGWebLogger/Web/*.*'
   s.dependency "CocoaLumberjack"
-  s.dependency "CocoaHTTPServer"
 end
