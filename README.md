@@ -12,7 +12,7 @@ IGWebLogger needs latest version of CocoaHTTPServer which has latest WebSocket a
 use cocoapods, you will need to include following pods in your ```Podfile```:
 
 ```ruby
-pod "IGWebLogger", :podspec => "https://raw.github.com/siuying/IGWebLogger/0.1.1/IGWebLogger.podspec"
+pod "IGWebLogger", :podspec => "https://raw.github.com/siuying/IGWebLogger/0.1.2/IGWebLogger.podspec"
 pod "CocoaHTTPServer", :podspec => 'https://gist.github.com/siuying/5080491/raw/a06f5559ee7bc9a6128c1135cfbd2f62d9aded00/CocoaHTTPServer.podspec'
 ```
 
