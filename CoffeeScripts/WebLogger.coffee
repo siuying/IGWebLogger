@@ -16,11 +16,26 @@ class WebLogger
     div = $("#logger")[0]
     div.scrollTop = div.scrollHeight
 
+  setFilter: (level) ->
+    $("#logger").removeClass("level-error level-warn level-info level-verbose level-all")
+    $("#logger").addClass("level-#{level}") if level
+
 $(document).ready ->
   logger = new WebLogger()
   
   $("#clear").on 'click', ->
     $("#logger").html("")
+    return false
+
+  $("#level li a").on 'click', (e) ->
+    level = $(this).data("level")
+    if level
+      console.log "set filter to #{level}"
+      $("#level li").removeClass("active")
+      $(this).parent().addClass("active").addClass("level-#{level}")
+      logger.setFilter(level)
+
+    return false
 
   if `("WebSocket" in window)`
     ws = new WebSocket("%%WEBSOCKET_URL%%")

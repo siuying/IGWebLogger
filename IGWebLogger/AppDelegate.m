@@ -34,6 +34,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 
     [NSTimer scheduledTimerWithTimeInterval:1.0
                                      target:self
+                                   selector:@selector(printVerboseLog)
+                                   userInfo:nil
+                                    repeats:YES];
+
+    [NSTimer scheduledTimerWithTimeInterval:10.0
+                                     target:self
                                    selector:@selector(printDateLog)
                                    userInfo:nil
                                     repeats:YES];
@@ -81,8 +87,12 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
     }    
 }
 
+-(void) printVerboseLog {
+    DDLogVerbose(@"a verbose log message .... ");
+}
+
 -(void) printDateLog {
-    DDLogInfo(@"current time => %@", [NSDate date]);
+    DDLogWarn(@"current time => %@", [NSDate date]);
 }
 
 @end

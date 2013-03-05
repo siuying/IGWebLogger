@@ -25,6 +25,13 @@
       return div.scrollTop = div.scrollHeight;
     };
 
+    WebLogger.prototype.setFilter = function(level) {
+      $("#logger").removeClass("level-error level-warn level-info level-verbose level-all");
+      if (level) {
+        return $("#logger").addClass("level-" + level);
+      }
+    };
+
     return WebLogger;
 
   })();
@@ -33,7 +40,19 @@
     var logger, ws;
     logger = new WebLogger();
     $("#clear").on('click', function() {
-      return $("#logger").html("");
+      $("#logger").html("");
+      return false;
+    });
+    $("#level li a").on('click', function(e) {
+      var level;
+      level = $(this).data("level");
+      if (level) {
+        console.log("set filter to " + level);
+        $("#level li").removeClass("active");
+        $(this).parent().addClass("active").addClass("level-" + level);
+        logger.setFilter(level);
+      }
+      return false;
     });
     if (("WebSocket" in window)) {
       ws = new WebSocket("%%WEBSOCKET_URL%%");

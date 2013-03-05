@@ -8,6 +8,11 @@
   overflow:auto;
 }
 
+#level {
+  margin-top: 20px;
+  margin-bottom: 4px;
+}
+
 #status {
   float: right;
   font-style: italic;
@@ -16,4 +21,24 @@
 
 #status.warning {
   color: #DD0000;
+}
+
+.level-error .log, .level-warn .log, .level-info .log, .level-verbose .log {
+  display: none;
+}
+
+.level-error .log.error, .level-warn .log.warn, .level-info .log.info, .level-verbose .log.verbose {
+  display: block;
+}
+
+.log.error {
+  color: #AA0000;
+}
+
+.log.info {
+  color: #444444;
+}
+
+.log.verbose {
+  color: #777777;
 }
