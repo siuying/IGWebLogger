@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'IGWebLogger'
-  s.version  = '0.1.0'
+  s.version  = '0.1.2'
   s.summary  = 'IGWebLogger allows you to view your iOS app logs over web browser in realtime.'
   
   s.homepage = 'https://github.com/siuying/IGWebLogger'
