@@ -39,10 +39,20 @@ First, start the web socket server in AppDelegate.m
 }
 ```
 
-Then connects your browser to http://localhost:8888 to view the logs realtime. (replace localhost with your iPhone address, if you run this on real device)
+Use [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) as usual to add logs.
+
+```objective-c
+
+DDLogError(@"Broken sprocket detected!");
+DDLogVerbose(@"User selected file:%@ withSize:%u", filePath, fileSize);
+
+```
+
+Then connects your browser to [http://localhost:8888](http://localhost:8888) to view the logs realtime. (If you run this on real device, replace ```localhost``` with the device name such as ```http://Meteor.local:8888```)
 
 ![](https://raw.github.com/siuying/IGWebLogger/master/screen.png)
 
 ### Dependency
 
--  CocoaHTTPServer - use the HEAD version which has latest WebSocket and ARC supports
+- [CocoaLumberjack](https://github.com/robbiehanson/CocoaLumberjack) - A fast & simple, yet powerful & flexible logging framework
+- [CocoaHTTPServer](https://github.com/robbiehanson/CocoaHTTPServer) - use the HEAD version which has latest WebSocket and ARC supports
