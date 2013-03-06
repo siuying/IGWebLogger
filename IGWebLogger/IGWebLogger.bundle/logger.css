@@ -23,6 +23,11 @@
   color: #DD0000;
 }
 
+#logger .log {
+  font-family:monospace;
+  white-space: pre;
+}
+
 .level-error .log, .level-warn .log, .level-info .log, .level-verbose .log {
   display: none;
 }
@@ -32,7 +37,12 @@
 }
 
 .log.error {
-  color: #AA0000;
+  color: #aa0000;
+  background: #ffebeb;
+}
+
+.log.warn {
+  background: #ffffc8;
 }
 
 .log.info {

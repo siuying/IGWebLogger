@@ -88,10 +88,11 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 }
 
 -(void) printVerboseLog {
-    DDLogVerbose(@"a verbose log message .... ");
+    DDLogVerbose(@"a verbose log message ....");
 }
 
 -(void) printDateLog {
+    DDLogError(@"! example error");
     DDLogWarn(@"current time => %@", [NSDate date]);
 }
 
