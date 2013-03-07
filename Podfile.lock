@@ -1,21 +1,17 @@
 
 PODS:
 - CocoaAsyncSocket (0.0.1)
-- CocoaHTTPServer (2.2.1):
+- CocoaHTTPServer (2.3):
   - CocoaAsyncSocket (~> 0.0.1)
   - CocoaLumberjack
 - CocoaLumberjack (1.6)
 
 DEPENDENCIES:
-- CocoaHTTPServer (from `https://gist.github.com/siuying/5080491/raw/a06f5559ee7bc9a6128c1135cfbd2f62d9aded00/CocoaHTTPServer.podspec')
-
-EXTERNAL SOURCES:
-  CocoaHTTPServer:
-    :podspec: https://gist.github.com/siuying/5080491/raw/a06f5559ee7bc9a6128c1135cfbd2f62d9aded00/CocoaHTTPServer.podspec
+- CocoaHTTPServer (= 2.3)
 
 SPEC CHECKSUMS:
   CocoaAsyncSocket: 70f5de3c1ba13526c23df75fc98a0ea3049aa19c
-  CocoaHTTPServer: 136dd287e2c24c7d5972198f984bd1f55340d5f0
+  CocoaHTTPServer: fae57be1739ba20b8b3e106d088e3dd55b12beb5
   CocoaLumberjack: 0f2fa7090a23f13261072d882e017c688300efbe
 
 COCOAPODS: 0.16.4
