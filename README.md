@@ -8,8 +8,7 @@ Status: Experimental
 
 ### Install
 
-IGWebLogger needs latest version of CocoaHTTPServer which has latest WebSocket and ARC supports. If you
-use cocoapods, you will need to include following pods in your ```Podfile```:
+The best way to use IGWebLogger is via CocoaPods. Add following line in your ```Podfile```:
 
 ```ruby
 pod "IGWebLogger", "~> 0.2.0"
